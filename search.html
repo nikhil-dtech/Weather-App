@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search City - Weather App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="img/icon.png" />
+</head>
+
+<body class="bg-gradient-to-br from-blue-400 to-indigo-600 min-h-screen text-white font-sans">
+  <div class="max-w-md mx-auto py-10 px-6">
+    <h3 class="text-2xl font-semibold mb-6">Search For City</h3>
+
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 flex items-center space-x-3 mb-6">
+      <div class="text-blue-200"><i class="fa-solid fa-location-dot fa-lg"></i></div>
+      <input class="searchinput bg-transparent placeholder-blue-300 focus:outline-none flex-grow text-white text-lg" type="text" placeholder="Search..." />
+    </div>
+
+    <div class="message mb-4 text-sm opacity-80">
+      You have the option to search by city, state, or country names.
+    </div>
+
+    <div class="error-message mb-4 bg-red-600 bg-opacity-40 p-3 rounded-md hidden">
+      One of the specified locations (city, state, or country) was not found. Please try again.
+    </div>
+
+    <div class="return">
+      <div class="box bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg">
+        <div class="weather-box flex justify-between items-center mb-4">
+          <div class="name">
+            <div class="city-name text-xl font-semibold">London</div>
+            <div class="weather-temp text-3xl font-bold">20°</div>
+          </div>
+          <div class="weather-icon">
+            <img class="weather-img w-16 h-16" src="img/haze.png" alt="weather icon" />
+          </div>
+        </div>
+
+        <div class="weather-desc grid grid-cols-2 gap-6">
+          <div class="desc-box flex items-center space-x-3">
+            <div class="desc-icon text-blue-300"><i class="fa-solid fa-wind fa-lg"></i></div>
+            <div>
+              <div class="desc-name font-semibold">Wind</div>
+              <div class="desc-info wind">15 m/s</div>
+            </div>
+          </div>
+
+          <div class="desc-box flex items-center space-x-3">
+            <div class="desc-icon text-blue-300"><i class="fa-solid fa-temperature-full fa-lg"></i></div>
+            <div>
+              <div class="desc-name font-semibold">Pressure</div>
+              <div class="desc-info pressure">15 mbar</div>
+            </div>
+          </div>
+
+          <div class="desc-box flex items-center space-x-3">
+            <div class="desc-icon text-blue-300"><i class="fa-solid fa-droplet fa-lg"></i></div>
+            <div>
+              <div class="desc-name font-semibold">Humidity</div>
+              <div class="desc-info humidity">50%</div>
+            </div>
+          </div>
+
+          <div class="desc-box flex items-center space-x-3">
+            <div class="desc-icon text-blue-300"><i class="fa-solid fa-sun fa-lg"></i></div>
+            <div>
+              <div class="desc-name font-semibold">Sun Rise</div>
+              <div class="desc-info sunrise">12:00:00</div>
+            </div>
+          </div>
+
+          <div class="desc-box flex items-center space-x-3">
+            <div class="desc-icon text-blue-300"><i class="fa-solid fa-cloud-sun fa-lg"></i></div>
+            <div>
+              <div class="desc-name font-semibold">Sun Set</div>
+              <div class="desc-info sunset">12:00:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white/20 backdrop-blur-md py-3 px-6 flex justify-around">
+      <a href="index.html" class="text-white"><i class="fa-solid fa-location-arrow text-xl"></i></a>
+      <a href="search.html" class="text-white"><i class="fa-solid fa-magnifying-glass text-xl"></i></a>
+      <a href="world.html" class="text-white"><i class="fa-solid fa-earth-americas text-xl"></i></a>
+    </nav>
+  </div>
+
+  <script src="js/search.js"></script>
+</body>
+
+</html>

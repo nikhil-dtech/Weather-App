@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="img/icon.png" />
+</head>
+
+<body class="bg-gradient-to-br from-blue-400 to-indigo-600 min-h-screen text-white font-sans">
+  <div class="max-w-md mx-auto py-10 px-6">
+    <!-- Current City Weather -->
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg mb-8">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-map-pin"></i>
+          <h1 id="city-name" class="text-2xl font-bold">Mumbai</h1>
+        </div>
+        <img class="w-16 h-16" src="img/sun.png" id="weather-icon" />
+      </div>
+      <div class="mt-4 text-center">
+        <div id="metric" class="text-6xl font-bold">0°</div>
+        <div class="text-lg mt-1" id="weather-main">Sunny</div>
+        <div class="text-sm mt-2">H: <span id="humidity">60</span>% | F: <span id="feels-like">60</span>°</div>
+      </div>
+    </div>
+
+    <!-- Today Forecast -->
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg mb-8">
+      <h2 class="text-xl font-semibold mb-4">Today</h2>
+      <div class="flex items-center justify-between">
+        <img class="w-12 h-12" src="img/sun.png" />
+        <div class="text-xl font-medium">
+          <span id="temp-min-today">50°</span>/<span id="temp-max-today">55°</span>
+        </div>
+        <div id="weather-main-today">Sunny</div>
+      </div>
+    </div>
+
+    <!-- Future Forecast -->
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg mb-8">
+      <h2 class="text-xl font-semibold mb-4">6-Day Forecast</h2>
+      <div id="future-forecast-box" class="grid grid-cols-2 gap-4 text-sm"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white/20 backdrop-blur-md py-3 px-6 flex justify-around">
+      <a class="text-white" href="index.html"><i class="fa-solid fa-location-arrow text-xl"></i></a>
+      <a class="text-white" href="search.html"><i class="fa-solid fa-magnifying-glass text-xl"></i></a>
+      <a class="text-white" href="world.html"><i class="fa-solid fa-earth-americas text-xl"></i></a>
+    </nav>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

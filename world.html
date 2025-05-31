@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>World Weather - Weather App</title>
+  <link rel="icon" type="image/png" href="img/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/world.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #2563eb);
+      color: white;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+    }
+
+    #screen {
+      width: 360px;
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .date {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .button {
+      cursor: pointer;
+      background: rgba(255 255 255 / 0.2);
+      padding: 10px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background: rgba(255 255 255 / 0.4);
+    }
+
+    .btn-icon {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .section-box {
+      background: rgba(255 255 255 / 0.15);
+      border-radius: 15px;
+      padding: 15px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .add-section-title h2 {
+      margin: 0 0 10px;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255 255 255 / 0.3);
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: rgba(255 255 255 / 0.05);
+    }
+
+    .search-icon i {
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .searchinput {
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .messages div {
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .error-message {
+      background: #dc2626aa;
+      display: none;
+    }
+
+    .normal-message {
+      background: #2563ebaa;
+      display: block;
+    }
+
+    .added-message {
+      background: #16a34daa;
+      display: none;
+    }
+
+    .city-box {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .city-box::-webkit-scrollbar {
+      display: none;
+    }
+
+    nav {
+      margin-top: 15px;
+      background: rgba(255 255 255 / 0.15);
+      padding: 10px 0;
+      border-radius: 15px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: 1.3rem;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="screen">
+    <!-- main section -->
+    <div class="section">
+      <div class="date">April 7, 2024</div>
+      <div id="toggleAddSectionBtn" class="button" aria-label="Add new place">
+        <i class="fa-solid fa-circle-plus btn-icon"></i>
+      </div>
+    </div>
+    <!-- add section -->
+    <div id="addSection" class="section-box" style="display: none;">
+      <div class="add-section">
+        <div class="add-section-title">
+          <h2>Add a new place</h2>
+        </div>
+        <!-- search -->
+        <div class="search">
+          <div class="search-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <input id="searchInput" class="searchinput" type="text" placeholder="search..." aria-label="Search city" />
+        </div>
+        <!-- error message -->
+        <div class="messages">
+          <div id="errorMessage" class="error-message">City not found</div>
+          <div id="normalMessage" class="normal-message">Search your city to add</div>
+          <div id="addedMessage" class="added-message">Successfully added ✔</div>
+        </div>
+      </div>
+    </div>
+    <!-- All City -->
+    <div class="city-box" id="cityBox"></div>
+    <!-- nav section -->
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-location-arrow"></i></a></li>
+        <li><a href="search.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+        <li><a class="active" href="world.html"><i class="fa-solid fa-earth-americas"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- javascript -->
+  <script src="js/world.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggleAddSectionBtn');
+    const addSection = document.getElementById('addSection');
+    const searchInput = document.getElementById('searchInput');
+
+    toggleBtn.addEventListener('click', () => {
+      if (addSection.style.display === 'flex') {
+        addSection.style.display = 'none';
+      } else {
+        addSection.style.display = 'flex';
+        searchInput.focus();
+      }
+    });
+  </script>
+</body>
+
+</html>
