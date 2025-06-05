@@ -4,7 +4,7 @@ A sleek and responsive weather forecast web application that provides real-time 
 
 ## 🔗 Live Demo
 
-> https://github.com/nikhil-dtech/Weather-App.git
+> https://weatherapp9910.netlify.app/
 
 ---
 
